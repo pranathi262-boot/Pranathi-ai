@@ -1,9 +1,8 @@
-<!-- Pranathi AI website --><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Pranathi AI</title>
 
 <style>
@@ -14,118 +13,206 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: #f4f6fb;
+  background: linear-gradient(135deg, #667eea, #764ba2, #b06ab3);
+  min-height: 100vh;
+  padding: 15px;
+}
+
+.app {
+  max-width: 650px;
+  margin: 15px auto;
+  background: rgba(255,255,255,0.96);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px #24103d55;
 }
 
 header {
-  background: #24243e;
+  background: linear-gradient(135deg, #6a11cb, #8e44ad);
   color: white;
-  padding: 18px;
+  padding: 25px 15px;
   text-align: center;
-  font-size: 24px;
-  font-weight: bold;
+}
+
+.logo {
+  font-size: 42px;
+}
+
+header h1 {
+  margin: 8px 0;
+  font-size: 28px;
 }
 
 .subtitle {
-  font-size: 13px;
-  font-weight: normal;
-  margin-top: 6px;
+  font-size: 14px;
+  opacity: 0.9;
 }
 
-.container {
-  max-width: 600px;
-  margin: 20px auto;
-  padding: 15px;
+.status {
+  margin-top: 12px;
+  font-size: 12px;
+}
+
+.status span {
+  color: #a8ffb0;
 }
 
 #chat {
-  height: 60vh;
-  min-height: 250px;
+  height: 48vh;
+  min-height: 280px;
+  max-height: 500px;
   overflow-y: auto;
-  background: white;
-  border-radius: 12px;
-  padding: 15px;
-  box-shadow: 0 3px 12px #0001;
+  padding: 18px;
+  background: #faf8ff;
 }
 
 .message {
-  padding: 11px;
-  margin: 10px 0;
-  border-radius: 10px;
+  padding: 12px 15px;
+  margin: 12px 0;
+  border-radius: 16px;
+  max-width: 88%;
   overflow-wrap: anywhere;
   white-space: pre-wrap;
+  line-height: 1.5;
+  animation: appear 0.25s ease;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .bot {
-  background: #e8eaff;
-  text-align: left;
+  background: #eee6ff;
+  color: #352052;
+  border-bottom-left-radius: 4px;
 }
 
 .user {
-  background: #d8f8df;
-  text-align: right;
+  background: linear-gradient(135deg, #805ad5, #6b46c1);
+  color: white;
+  margin-left: auto;
+  border-bottom-right-radius: 4px;
+}
+
+.name {
+  display: block;
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.suggestions {
+  display: flex;
+  gap: 8px;
+  padding: 12px;
+  overflow-x: auto;
+  background: white;
+}
+
+.suggestions button {
+  white-space: nowrap;
+  border: 1px solid #d8c5ff;
+  background: #f5efff;
+  color: #6236a0;
+  border-radius: 20px;
+  padding: 9px 13px;
+  cursor: pointer;
 }
 
 .input-area {
   display: flex;
   gap: 8px;
-  margin-top: 12px;
+  padding: 14px;
+  background: white;
+  border-top: 1px solid #eee;
 }
 
 input {
   flex: 1;
   min-width: 0;
-  padding: 13px;
-  border: 1px solid #ccc;
-  border-radius: 9px;
+  padding: 14px;
+  border: 1px solid #d7c9ed;
+  border-radius: 14px;
+  outline: none;
   font-size: 16px;
 }
 
-button {
-  padding: 12px 17px;
-  background: #5555dd;
-  color: white;
+input:focus {
+  border-color: #805ad5;
+}
+
+.send {
+  padding: 12px 18px;
   border: none;
-  border-radius: 9px;
-  font-size: 16px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #805ad5, #6b46c1);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.send:active {
+  transform: scale(0.96);
 }
 
 footer {
   text-align: center;
-  color: #666;
+  padding: 15px;
+  color: #796b8d;
   font-size: 12px;
-  margin-top: 18px;
+  background: white;
 }
 </style>
 </head>
 
 <body>
 
-<header>
-  🤖 Pranathi AI
-  <div class="subtitle">Your Simple Chat Assistant</div>
-</header>
+<div class="app">
 
-<div class="container">
+  <header>
+    <div class="logo">🤖</div>
+    <h1>Pranathi AI</h1>
+    <div class="subtitle">Your Friendly AI Chat Assistant 💜</div>
+    <div class="status"><span>●</span> Ready to chat!</div>
+  </header>
 
   <div id="chat" aria-live="polite">
     <div class="message bot">
-      <b>Pranathi AI</b><br>
-      Hello! 👋 Welcome to Pranathi AI.
-      Type Hi to start chatting!
+      <span class="name">🤖 Pranathi AI</span>
+      Hello! 👋 Welcome to Pranathi AI!
+
+      Nenu nee friendly chat assistant.
+      Message pampinchu, manam chat cheddam! 😊
     </div>
   </div>
 
-  <div class="input-area">
-    <input id="msg"
-      placeholder="Type your message..."
-      autocomplete="off">
+  <div class="suggestions">
+    <button onclick="quickSend('Hi')">👋 Hi</button>
+    <button onclick="quickSend('What is your name?')">🤖 Your name</button>
+    <button onclick="quickSend('How are you?')">😊 How are you?</button>
+    <button onclick="quickSend('Help')">💡 Help</button>
+  </div>
 
-    <button onclick="sendMsg()">Send</button>
+  <div class="input-area">
+    <input
+      id="msg"
+      type="text"
+      placeholder="Type your message..."
+      autocomplete="off"
+      aria-label="Your message">
+
+    <button class="send" onclick="sendMsg()">Send ➤</button>
   </div>
 
   <footer>
-    Pranathi AI • Beginner Software Project
+    💜 Made with love • Pranathi AI
   </footer>
 
 </div>
@@ -137,61 +224,115 @@ function sendMsg() {
 
   if (!message) return;
 
-  const chat = document.getElementById("chat");
-
   addMessage("You", message, "user");
 
   const text = message.toLowerCase();
-  let reply = "Sorry! I don't know that yet. 😊";
+  let reply = "Sorry! I don't know that yet. 😊 Try typing Help!";
 
-  if (text.includes("hello") ||
-      text === "hi" ||
-      text.includes("hey")) {
-    reply = "Hello! 😊 Welcome to Pranathi AI.";
-  } else if (text.includes("your name") ||
-             text.includes("nee peru")) {
-    reply = "My name is Pranathi AI! 🤖";
-  } else if (text.includes("how are you")) {
-    reply = "I am fine! Thank you for asking. 😊";
-  } else if (text.includes("bye")) {
-    reply = "Goodbye! Have a great day! 👋";
-  } else if (text.includes("help")) {
-    reply = "I can reply to simple messages. Try saying Hi!";
-  } else if (text.includes("thank")) {
-    reply = "You're welcome! ❤️";
-  } else if (text.includes("నమస్కారం") ||
-             text.includes("నమస్తే")) {
-    reply = "నమస్కారం! Pranathi AIకి స్వాగతం. 😊";
-  } else if (text.includes("నీ పేరు")) {
-    reply = "నా పేరు Pranathi AI! 🤖";
-  } else if (text.includes("ఎలా ఉన్నావు")) {
+  if (
+    text === "hi" ||
+    text.includes("hello") ||
+    text.includes("hey")
+  ) {
+    reply = "Hello! 👋 Welcome to Pranathi AI! 💜";
+  } else if (
+    text.includes("your name") ||
+    text.includes("nee peru") ||
+    text.includes("నీ పేరు")
+  ) {
+    reply = "My name is Pranathi AI! 🤖💜";
+  } else if (
+    text.includes("how are you") ||
+    text.includes("ela unnav") ||
+    text.includes("ఎలా ఉన్నావు")
+  ) {
+    reply = "I am fine! 😊 Nuvvu ela unnav? 💜";
+  } else if (
+    text.includes("bye") ||
+    text.includes("goodbye")
+  ) {
+    reply = "Goodbye! 👋 Have a wonderful day! 💜";
+  } else if (
+    text.includes("help") ||
+    text.includes("ఏమి చేయగలవు")
+  ) {
+    reply = "I can chat with you! 😊 Try asking my name, saying Hi, or asking how I am.";
+  } else if (
+    text.includes("thank") ||
+    text.includes("ధన్యవాద")
+  ) {
+    reply = "You're welcome! 💜😊";
+  } else if (
+    text.includes("love you")
+  ) {
+    reply = "That's kind of you! 💜 I'm happy to chat and help you.";
+  } else if (
+    text.includes("నమస్కారం") ||
+    text.includes("నమస్తే")
+  ) {
+    reply = "నమస్కారం! 💜 Pranathi AI కి స్వాగతం!";
+  } else if (
+    text.includes("బాగున్నావా") ||
+    text.includes("ఎలా ఉన్నావు")
+  ) {
     reply = "నేను బాగున్నాను! 😊 నువ్వు ఎలా ఉన్నావు?";
+  } else if (
+    text.includes("నీ పేరు")
+  ) {
+    reply = "నా పేరు Pranathi AI! 🤖💜";
+  } else if (
+    text.includes("ఏం చేస్తున్నావు")
+  ) {
+    reply = "నీతో మాట్లాడుతున్నాను! 😊💜";
+  } else if (
+    text.includes("good morning")
+  ) {
+    reply = "Good morning! 🌞 Have a beautiful day!";
+  } else if (
+    text.includes("good night")
+  ) {
+    reply = "Good night! 🌙 Sweet dreams!";
+  } else if (
+    text.includes("who made you")
+  ) {
+    reply = "I am Pranathi AI, a beginner chatbot project! 💜";
+  } else if (
+    text.includes("నీకు తెలుగు వచ్చా")
+  ) {
+    reply = "అవును! నాకు కొన్ని తెలుగు పదాలు అర్థమవుతాయి. 😊";
   }
 
   addMessage("Pranathi AI", reply, "bot");
 
   input.value = "";
   input.focus();
-  chat.scrollTop = chat.scrollHeight;
 }
 
 function addMessage(name, text, type) {
   const chat = document.getElementById("chat");
   const box = document.createElement("div");
-  const label = document.createElement("b");
+  const label = document.createElement("span");
 
   box.className = "message " + type;
-  label.textContent = name;
+  label.className = "name";
+  label.textContent = type === "bot" ? "🤖 " + name : "💬 " + name;
 
   box.appendChild(label);
-  box.appendChild(document.createElement("br"));
   box.appendChild(document.createTextNode(text));
 
   chat.appendChild(box);
+  chat.scrollTop = chat.scrollHeight;
 }
 
-document.getElementById("msg").addEventListener("keydown", function(e) {
-  if (e.key === "Enter") sendMsg();
+function quickSend(message) {
+  document.getElementById("msg").value = message;
+  sendMsg();
+}
+
+document.getElementById("msg").addEventListener("keydown", function(event) {
+  if (event.key === "Enter") {
+    sendMsg();
+  }
 });
 </script>
 
